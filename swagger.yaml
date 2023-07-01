@@ -1,0 +1,45 @@
+openapi: 3.0.3
+info:
+  version: 1.0.0
+  title: Swagger Petstore - OpenAPI 3.0
+  description: |-
+    This is a sample Pet Store Server based on the OpenAPI 3.0 specification.  You can find out more about
+    Swagger at [https://swagger.io](https://swagger.io). In the third iteration of the pet store, we've switched to the design first approach!
+    You can now help us improve the API whether it's by making changes to the definition itself or to the code.
+    That way, with time, we can improve the API in general, and expose some of the new features in OAS3.
+servers:
+  - url: http://localhost:8085
+tags:
+  - name: remove_background
+paths:
+  /remove_background:
+    post:
+      tags:
+        - remove_background
+      description: remove background from image
+      security:
+        - bearerAuth: []
+
+      requestBody:
+        description: Remove background from image send by client
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                files[]:
+                  type: string
+                  format: binary
+      responses:
+        '200':
+          description: Successful operation
+        '400':
+          description: Bad request
+        '404':
+          description: Pet not found
+components:
+  securitySchemes:
+    bearerAuth:
+      name: Authorization
+      in: header
+      type: apiKey
