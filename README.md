@@ -4,7 +4,6 @@
 
 ```
 git clone https://github.com/hoang2807/python_remove_background.git
-cd MODNet
 docker-compose build
 docker-compose up -d
 ```
